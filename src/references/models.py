@@ -24,10 +24,8 @@ class Book(models.Model):
     #genre
     #year_of_publishing
 
-    def __str__(self):
-        return self.authors
-        return self.name
-        return self.description
+    def __str__(self):  #здесь определяется порядок вывода  инфы, можно брать из других моделей, см.видео от 29.01/2ч17мин
+        return f"{self.authors} {self.name} {self.description}"
 
 
 class Customers(models.Model):
@@ -41,7 +39,7 @@ class Customers(models.Model):
         max_length=11,
         null=True,
         blank=True)
-    def __str__(self):
-        return self.name
-        return self.phone
+    def __str__(self):  #здесь определяется порядок вывода  инфы, можно брать из других моделей, см.видео от 29.01/2ч17мин
+        return f"{self.name} {self.phone}"
+       
  

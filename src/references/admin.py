@@ -6,19 +6,19 @@ from . import models
 
 class BookAdmin(admin.ModelAdmin):
     list_display = [
-        'pk'
-        'authors'
-        'name'
+        'pk',
+        'authors',
+        'name',
         'description'
     ]
 
 class CustomersAdmin(admin.ModelAdmin):
     list_display = [
-        'pk'
-        'name'
-        'phone'
+        'pk',
+        'name',
+        'phone',
     ]
 
-admin.site.register(models.Book)
-
-admin.site.register(models.Customers)
+ #здесь определяется регистрация инфы инфы в базе данных, см.видео от 29.01/2ч22мин
+admin.site.register(models.Book, BookAdmin)
+admin.site.register(models.Customers, CustomersAdmin)
