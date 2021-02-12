@@ -16,9 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from references.views import home_page  #забираем определение визуальной страницы
+#from references.views import home_page  забираем определение визуальной страницы, "home_page" - это функция, ниже её переаём
+from references import views #запись для строки 25, "Внимательно смотрите, что импортируете и как обращаетесь к импортированным объектам и модулям"(с)
 
 urlpatterns = [
     path('admin/', admin.site.urls), #http://127.0.0.1:8000/admin/
-    path('', home_page) #http://127.0.0.1:8000/
+    #path('', home_page), #http://127.0.0.1:8000/ --первонвчальная главная страница
+    path('books/', views.books_list, name="book-list"), #http://127.0.0.1:8000/books --cтраница c таблицей -- !!!внимательно см путь, его окончание
+    path('books/<int:pk>/', views.book_detail, name="book-detail"),
+    path('book-delete/<int:pk>/', views.book_delete, name="book-delete") #рописывает удаление столбца
+    # URL
+    # GET
+    # POST 
 ]
