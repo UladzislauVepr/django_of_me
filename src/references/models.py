@@ -2,11 +2,11 @@ from django.db import models
 
 # Create your models here.
 
-class Book(models.Model):
+class Book(models.Model):               #формируем модель для базы данных
     #id/pk -- create autimatically
     authors = models.CharField(
         verbose_name="autors of book",
-        max_length=100,
+        max_length=50,
         null=True,
         blank=True)
     name = models.CharField(

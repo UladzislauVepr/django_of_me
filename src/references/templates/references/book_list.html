@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta  charset = " UTF-8 " >
@@ -61,7 +61,7 @@
 <body>
 <article>
 <div id="logo">
-  "Книжный мир"
+ CBV "Книжный мир"
 </div>
 <table border="1">
 	<tr>
@@ -71,14 +71,14 @@
 		<td>description</td>
 		<td>actions</td>
 	</tr>
-	{% for book in books %}
+	{% for book in object_list %}
 	<tr>
 		<td text: center>{{ book.pk }}</td>
 		<td>{{ book.authors }}</td>
 		<td><a href="{% url 'book-detail-cbv' book.pk %}">{{ book.name }}</a></td>
 		<td>{{ book.description }}</td>
 		<td>
-			<a href="{% url 'book-delete' book.pk %}">delete</a>
+			<a href="{% url 'book-delete-cbv' book.pk %}">delete</a>
 			<a href="{% url 'book-update' book.pk %}">update</a>
 		</td>
 	</tr>

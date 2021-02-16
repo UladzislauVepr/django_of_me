@@ -23,8 +23,13 @@ urlpatterns = [
     path('admin/', admin.site.urls), #http://127.0.0.1:8000/admin/
     #path('', home_page), #http://127.0.0.1:8000/ --первонвчальная главная страница
     path('books/', views.books_list, name="book-list"), #http://127.0.0.1:8000/books --cтраница c таблицей -- !!!внимательно см путь, его окончание
+    path('books-cbv/', views.BooksList.as_view(), name="book-list-cbv"),    #делаем классовым методом
     path('books/<int:pk>/', views.book_detail, name="book-detail"),
-    path('book-delete/<int:pk>/', views.book_delete, name="book-delete") #рописывает удаление столбца
+    path('books-cbv/<int:pk>/', views.BookDetail.as_view(), name="book-detail-cbv"),     #делаем классовым методом
+    path('book-delete/<int:pk>/', views.book_delete, name="book-delete"),   #прописывает удаление столбца
+    path('book-delete-cbv/<int:pk>/', views.BookDelete.as_view(), name="book-delete-cbv"),
+    path('book-create/', views.book_create, name="book-create"), #
+    path('book-update/<int:pk>/', views.book_update, name="book-update")   #прописывает обновление книги
     # URL
     # GET
     # POST 
