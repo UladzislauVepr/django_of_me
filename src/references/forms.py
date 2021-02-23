@@ -7,8 +7,6 @@ class BookForm(forms.ModelForm):
     class Meta:
         model=models.Book
         fields=('name', 'authors', 'description')   #здесь прописываются поля, которые мы хотим видель из файла models
-
-
     def clean(self):                    #здксь можно реализовывать любую логичу питона
         cleaned_data=super().clean()    # как, например, проверка запрещенный авторов в этом случае
         authors=cleaned_data.get('authors')

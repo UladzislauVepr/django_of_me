@@ -4,9 +4,9 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponseRedirect
 from references.models import Book #импорт класса объектов
-from django.urls import reverse
+from django.urls import reverse #+ reverse_lazy
 from . import forms
-from django.views.generic import DetailView, ListView, DeleteView     #импортируем библиотеки для работы классовым методом
+from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView     #импортируем библиотеки для работы классовым методом
 
 
 def books_list(request):
@@ -37,6 +37,18 @@ class BookDelete(DeleteView):
     success_url='/books-cbv/'
     model=Book
 
+class BookCreate(CreateView):
+    model=Book
+    success_url='/books-cbv/'   #
+    #success_url=reverse_lazy('books-list-cbv)  #ля этого метода требуется ДОімпортіровать этот метод выше
+    fields=('name', 'authors', 'description')   # две строки для создания полей (нижн тоже)
+    #form_class=forms.CityForm
+
+class BookUpdate(UpdateView):
+    model=Book
+    success_url='/books-cbv/'   #
+    fields=('name', 'authors', 'description')
+
 def book_create(request):
     context={}
     if request.method == "POST":
@@ -65,5 +77,5 @@ def book_update(request, pk):
         book.authors=authors
         book.description=description
         book.save()     # это тоже важная строка
-        return HttpResponseRedirect(reverse('book-detail', kwargs={'pk':book.pk})) #по этой команде происходит отрисовка
+        return HttpResponseRedirect(reverse('book-detail-cbv', kwargs={'pk':book.pk})) #по этой команде происходит отрисовка !!! добаил к марруту "-cbv"
     return render(request, template_name="update.html", context=context)

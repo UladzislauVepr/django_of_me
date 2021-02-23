@@ -1,0 +1,22 @@
+﻿{% extends "base.html" %}
+{% load crispy_forms_tags %}   <!--# загружаем теги от crispy-->
+
+{% block title %}
+Form of book
+{% endblock title %}
+
+{% block maim_content %}
+
+	<h1> Add book: </h1>
+	<form action="" method="POST">
+		{% csrf_token %}
+		{{ form|crispy }}
+		</br>
+		</br>
+		<button class="btn btn-danger btn-block">Add</button>
+	</form>
+	</br>
+	</br>
+	<a href="/books-cbv/" class="btn btn-danger">All books</a>
+	
+	{% endblock maim_content %}

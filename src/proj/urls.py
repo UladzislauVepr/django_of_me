@@ -21,7 +21,7 @@ from references import views #запись для строки 25, "Внимат
 
 urlpatterns = [
     path('admin/', admin.site.urls), #http://127.0.0.1:8000/admin/
-    #path('', home_page), #http://127.0.0.1:8000/ --первонвчальная главная страница
+    path('', views.BooksList.as_view(), name="book-list-supercbv"), #http://127.0.0.1:8000/ --первонвчальная главная страница
     path('books/', views.books_list, name="book-list"), #http://127.0.0.1:8000/books --cтраница c таблицей -- !!!внимательно см путь, его окончание
     path('books-cbv/', views.BooksList.as_view(), name="book-list-cbv"),    #делаем классовым методом
     path('books/<int:pk>/', views.book_detail, name="book-detail"),
@@ -29,8 +29,9 @@ urlpatterns = [
     path('book-delete/<int:pk>/', views.book_delete, name="book-delete"),   #прописывает удаление столбца
     path('book-delete-cbv/<int:pk>/', views.BookDelete.as_view(), name="book-delete-cbv"),
     path('book-create/', views.book_create, name="book-create"), #
+    path('book-create-cbv/', views.BookCreate.as_view(), name="book-create-cbv"),
+    path('book-update-cbv/<int:pk>/', views.BookUpdate.as_view(), name="book-update-cbv"),
     path('book-update/<int:pk>/', views.book_update, name="book-update")   #прописывает обновление книги
-    # URL
-    # GET
-    # POST 
+    
 ]
+#http://127.0.0.1:8000/book-update-cbv/<int:pk>
